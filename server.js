@@ -2,16 +2,16 @@ const express = require("express");
 require("dotenv").config();
 const connectDb = require("./db/dbconnect");
 const { createServer } = require("http");
-const multer = require("multer");
+// const multer = require("multer");
 const socketio = require("./socket");
-const swaggerUi = require("swagger-ui-express");
+// const swaggerUi = require("swagger-ui-express");
 // const swaggerDoc = require('./documentation/swaggerSetup');
 
 const app = express();
 const server = createServer(app);
 const io = socketio.init(server);
 const adIo = socketio.initAdIo(server, "/socket/adpage");
-const upload = multer({ dest: "uploads/" });
+
 
 // Body parser
 app.use(express.json());
@@ -24,8 +24,13 @@ app.use((req, res, next) => {
     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
   );
   res.setHeader("Access-Control-Allow-Headers", "*");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200); // Respond with HTTP OK status for preflight
+  }
   next();
 });
+
+
 
 // Documentation setup
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));

@@ -1,16 +1,19 @@
 * {
-    margin: 0;
-  }
-  
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-      'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  }
-  
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background: radial-gradient(circle, rgb(73, 255, 228), rgba(36, 74, 158, 0.8)); */
+  /* background-image: url("https://www.investopedia.com/thmb/UP7MsBD4RKj92ARPAjVgAD2q2X4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/_Online.Auctions_Imaginima-c98bad740abf45e89186f85206f924b8.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;  */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

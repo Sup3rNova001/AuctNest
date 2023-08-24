@@ -86,7 +86,7 @@ export const clearAdDetails = () => (dispatch) => {
 // Load ad image
 export const loadAdImage = (imageUrl) => async (dispatch) => {
   try {
-    const res = await axios.get(imageUrl, {
+    const res = await axios.get(`${imageUrl}`, {
       responseType: 'blob',
     });
 
