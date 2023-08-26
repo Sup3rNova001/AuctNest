@@ -48,7 +48,7 @@ app.use("/auction", require("./routes/auction"));
 app.use("/upload", require("./routes/uploads"));
 
 // Socket.io setup
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 io.on("connection", (socket) => {
   // console.log('### Socket IO client connected');
   socket.on("disconnect", (reason) => {
