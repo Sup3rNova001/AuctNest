@@ -15,7 +15,7 @@ const adIo = socketio.initAdIo(server, "/socket/adpage");
 app.use(express.json());
 app.use(cors());
 // CORS
-const allowedOrigins = ["https://auctnest.onrender.com/", "http://localhost:5000"];
+const allowedOrigins = ["https://auctnest.onrender.com", "http://localhost:5000"];
 
 const corsOptions = {
   origin: function (origin, callback) {
