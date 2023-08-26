@@ -39,7 +39,6 @@ const Nav = (props) => {
           {props.isAuth ? (
             <Link
               href='#'
-              color='inherit'
               onClick={props.logout}
               sx={{ textDecoration: 'none' }}
             >
