@@ -2,10 +2,9 @@ const express = require("express");
 require("dotenv").config();
 const connectDb = require("./db/dbconnect");
 const { createServer } = require("http");
-// const multer = require("multer");
+const cors = require("cors");
 const socketio = require("./socket");
-// const swaggerUi = require("swagger-ui-express");
-// const swaggerDoc = require('./documentation/swaggerSetup');
+
 const path = require("path");
 const app = express();
 const server = createServer(app);
@@ -14,23 +13,22 @@ const adIo = socketio.initAdIo(server, "/socket/adpage");
 
 // Body parser
 app.use(express.json());
-
+app.use(cors());
 // CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200); // Respond with HTTP OK status for preflight
-  }
-  next();
-});
+const allowedOrigins = ["https://auctnest.onrender.com/", "http://localhost:5000"];
 
-// Documentation setup
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.static(path.join(__dirname, "./frontend/build")));
 // Default route
 app.get("/", (req, res, next) => {

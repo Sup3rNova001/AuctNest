@@ -40,6 +40,7 @@ export const register =
     const body = JSON.stringify({ username: name, email, password, address, phone });
 
     try {
+      console.log("env" , process.env.REACT_APP_API_BASE_URL)
       const res = await axios.post(
         `${process.env.REACT_APP_API_BASE_URL}/user`,
         body,
@@ -81,6 +82,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
+    console.log(process.env.REACT_APP_API_BASE_URL)
     const res = await axios.post(
       `${process.env.REACT_APP_API_BASE_URL}/auth`,
       body,
