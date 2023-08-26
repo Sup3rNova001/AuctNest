@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const connectDb = require("./db/dbconnect");
 const { createServer } = require("http");
-const cors = require("cors");
+// const cors = require("cors");
 const socketio = require("./socket");
 
 const path = require("path");
@@ -13,19 +13,19 @@ const adIo = socketio.initAdIo(server, "/socket/adpage");
 
 // Body parser
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 // CORS
-const allowedOrigins = ["https://auctnest.onrender.com", "http://localhost:5000"];
+// const allowedOrigins = ["https://auctnest.onrender.com", "http://localhost:5000"];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+// };
 
 app.use(cors(corsOptions));
 
