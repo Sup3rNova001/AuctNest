@@ -6,12 +6,11 @@ const { createServer } = require("http");
 const socketio = require("./socket");
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDoc = require('./documentation/swaggerSetup');
-
+const path = require("path");
 const app = express();
 const server = createServer(app);
 const io = socketio.init(server);
 const adIo = socketio.initAdIo(server, "/socket/adpage");
-
 
 // Body parser
 app.use(express.json());
@@ -30,14 +29,13 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 // Documentation setup
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 // Default route
 app.get("/", (req, res, next) => {
-  res.send("Server running");
+  // res.send("Server running");
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
 
 // Routes
@@ -50,7 +48,7 @@ app.use("/auction", require("./routes/auction"));
 app.use("/upload", require("./routes/uploads"));
 
 // Socket.io setup
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 io.on("connection", (socket) => {
   // console.log('### Socket IO client connected');
   socket.on("disconnect", (reason) => {

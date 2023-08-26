@@ -1,0 +1,10 @@
+services:
+  - name: backend
+    plan: starter
+    buildCommand: npm install
+    startCommand: node server.js
+
+  - name: frontend
+    plan: starter
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build

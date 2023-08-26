@@ -228,6 +228,7 @@ const AdForm = (props) => {
                 id='imageFile'
                 onChange={fileSelected}
                 fullWidth
+                enctype="multipart/form-data"
               />
               {file === '' && (
                 <Typography variant='caption'>jpg, png or gif maximum 3 MB</Typography>
